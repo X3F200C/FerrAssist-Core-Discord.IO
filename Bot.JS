@@ -21,8 +21,11 @@ PluginsFolder = FileSystem.readdirSync("./Plugins/");
 Plugins = {};
 
 for (I = 0; I < PluginsFolder.length; I++) {
-	if (FileSystem.statSync("./Plugins/" + PluginsFolder[I]).isDirectory()) return;
-	if ("./Plugins/" + PluginsFolder[I].toUpperCase().endsWith(".JS")) Plugins[PluginsFolder[I].substring(0, PluginsFolder[I].length - 3)] = require("./Plugins/" + PluginsFolder[I]);
+	if (FileSystem.statSync("./Plugins/" + PluginsFolder[I]).isDirectory()) {
+
+    } else if ("./Plugins/" + PluginsFolder[I].toUpperCase().endsWith(".JS")) {
+        Plugins[PluginsFolder[I].substring(0, PluginsFolder[I].length - 3)] = require("./Plugins/" + PluginsFolder[I]);
+    }
 }
 
 PluginList = Object.keys(Plugins);
